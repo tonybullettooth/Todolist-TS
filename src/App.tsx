@@ -22,12 +22,12 @@ const App = () => {
         setTasks(tasks.filter(t => t.id !== taskID))
     }
     const addTask = (title: string) => {
-        const newTask: TaskType = {id: v1(), title: title, isDone: false}
+        const newTask: TaskType = {id: v1(), title, isDone: false}
         const updateTasks: Array<TaskType> = [newTask, ...tasks]
         setTasks(updateTasks)
     }
 
-    const [filter, setFilter] = useState<FilterValuesType>("completed")
+    const [filter, setFilter] = useState<FilterValuesType>("all")
     const changeFilter = (filter: FilterValuesType) => {
         setFilter(filter)
     }
