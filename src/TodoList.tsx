@@ -1,4 +1,4 @@
-import React, {useState, KeyboardEvent} from 'react';
+import React, {useState, KeyboardEvent, ChangeEvent} from 'react';
 import TodoListHeader from "./TodoListHeader";
 import Button from "./Button";
 import {FilterValuesType, TaskType} from "./App";
@@ -32,16 +32,16 @@ const TodoList = (props: TodoListPropsType) => {
     const setCompletedFilter = () => {
         props.changeFilter("completed")
     }
-  /*  const onChangeSetTitle = () => {
-setTitle(e.currentTarget.value)
-    }*/
+    const onChangeSetTitle = (e: ChangeEvent<HTMLInputElement>) => {
+        setTitle(e.currentTarget.value)
+    }
     return (
         <div>
             <TodoListHeader title={props.title}/>
             <div>
                 <input
                     value={title}
-                    onChange={(e) => setTitle(e.currentTarget.value)}
+                    onChange={onChangeSetTitle}
                     onKeyPress={onKeyPressAddTack}
                 />
                 <button onClick={onClickAddTask}>+</button>
