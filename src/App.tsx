@@ -26,6 +26,9 @@ const App = () => {
         const updateTasks: Array<TaskType> = [newTask, ...tasks]
         setTasks(updateTasks)
     }
+    const changeTaskStatus = (taskID: string, isDone: boolean ) => {
+        setTasks(tasks.map(t => t.id === taskID ? {...t, isDone} : t))
+    }
 
     const [filter, setFilter] = useState<FilterValuesType>("all")
     const changeFilter = (filter: FilterValuesType) => {
@@ -51,6 +54,8 @@ const App = () => {
                 removeTask={removeTask}
                 changeFilter={changeFilter}
                 addTask={addTask}
+                changeTaskStatus={changeTaskStatus}
+                filter={filter}
             />
         </div>
     );
